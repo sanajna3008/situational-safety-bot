@@ -2,6 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <script type="module">
+    import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
+
+    const API_KEY = "AIzaSyCaunMTGhqhni-2AXRiBhtfVKqnqBgqTu4;  // ← Replace with your key
+
+    const genAI = new GoogleGenerativeAI(API_KEY);
+    window.genAI = genAI;
+</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Situational Safety Bot</title>
   <link rel="stylesheet" href="style.css" />
@@ -27,8 +35,29 @@
   </div>
 
   <script src="script.js"></script>
+  <script>
+async function sendToGemini(message) {
+    const model = window.genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+    const result = await model.generateContent(message);
+    const response = await result.response;
+    return response.text();
+}
+
+async function handleChat() {
+    const input = document.getElementById("userInput").value;
+    const chatBox = document.getElementById("chatBox");
+
+    chatBox.innerHTML += <p><strong>You:</strong> ${input}</p>;
+
+    const reply = await sendToGemini(input);
+
+    chatBox.innerHTML += <p><strong>Bot:</strong> ${reply}</p>;
+}
+</script>
 </body>
 </html>
   
+
 
 
