@@ -3,12 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <script type="module">
-    import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
-
-    const API_KEY = "AIzaSyCaunMTGhqhni-2AXRiBhtfVKqnqBgqTu4;  // ← Replace with your key
-
-    const genAI = new GoogleGenerativeAI(API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
   async function sendMessage() {
     let userInput = document.getElementById("userInput").value;
 
@@ -40,43 +34,20 @@
 
     <input id="userInput" type="text" placeholder="Type your message…" style="width:70%; padding:8px;">
     <button onclick="handleChat()" style="padding:8px;">Send</button>
-
     <script>
-        import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
-
-const API_KEY = ""AIzaSyCaunMTGhqhni-2AXRiBhtfVKqnqBgqTu4;
-const genAI = new GoogleGenerativeAI(API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
-async function sendToGemini(message) {
-    try {
-        const result = await model.generateContent(message);
-        const response = await result.response;
-        return response.text();
-    } catch (err) {
-        return "Error: Something went wrong. Check your API key.";
-    }
-}
-
 async function handleChat() {
     const inputField = document.getElementById("userInput");
     const chatBox = document.getElementById("chatBox");
 
     const message = inputField.value.trim();
     if (!message) return;
-
     chatBox.innerHTML += <p><strong>You:</strong> ${message}</p>;
-
     const reply = await sendToGemini(message);
-
     chatBox.innerHTML += <p><strong>Bot:</strong> ${reply}</p>;
-
     chatBox.scrollTop = chatBox.scrollHeight;
-
     inputField.value = "";
 }
     </script>
-
 </body>
 </html>
   <div class="chat-container">
@@ -123,6 +94,7 @@ async function handleChat() {
   
 </html>
   
+
 
 
 
