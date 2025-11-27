@@ -1,5 +1,6 @@
 
-import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
+import { GoogleGenerativeAI } from 
+    "https://esm.run/@google/generative-ai";
 
 const API_KEY = "AIzaSyCaunMTGhqhni-2AXRiBhtfVKqnqBgqTu4"; 
 const genAI = new GoogleGenerativeAI(API_KEY);
@@ -29,3 +30,4 @@ async function handleChat() {
     }
 }  
   
+
